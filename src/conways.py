@@ -186,7 +186,12 @@ while not done:
     textRect.center = (inc_slower_button.center[0], inc_slower_button.center[1])
     screen.blit(text, textRect)
 
-
+    #   Stop / Play start
+    inc_slower_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(240, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
+    text = font.render("Start / Stop", True, (14, 28, 54)) # TODO: change text in button and refactor colour
+    textRect = text.get_rect()
+    textRect.center = (inc_slower_button.center[0], inc_slower_button.center[1])
+    screen.blit(text, textRect)
 
 
     # --- Go ahead and update the screen with what we've drawn.
