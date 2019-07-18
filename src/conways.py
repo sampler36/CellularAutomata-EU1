@@ -193,6 +193,13 @@ while not done:
     textRect.center = (inc_slower_button.center[0], inc_slower_button.center[1])
     screen.blit(text, textRect)
 
+    #   Restart
+    inc_slower_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(360, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
+    text = font.render("Restart", True, (14, 28, 54)) # TODO: change text in button and refactor colour
+    textRect = text.get_rect()
+    textRect.center = (inc_slower_button.center[0], inc_slower_button.center[1])
+    screen.blit(text, textRect)
+
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
