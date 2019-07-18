@@ -69,6 +69,7 @@ font = pygame.font.Font('freesansbold.ttf', 16)
 inc_timestep_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(10, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
 
 # TODO: add more buttons
+inc_slower_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(120, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
  
 # Loop until the user clicks the close button.
 done = False
@@ -88,9 +89,12 @@ while not done:
 
             # use the pos of mouse to decide which button was pressed
             if inc_timestep_button.collidepoint(click_pos) and time_step < 20:
-                print("faster")
+                print("Going faster")
                 time_step += 1
             # TODO: click pos for other buttons
+            if inc_slower_button.collidepoint(click_pos) and time_step > 40:
+                print("Going slower")
+                time_step -= 1
  
     # --- Game logic should go here
     # Update State ( Add Rules to update each cell based on it's previous state )
@@ -169,12 +173,21 @@ while not done:
 
     # Update inc Timestep button
     inc_timestep_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(10, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
-    text = font.render("Button", True, (14, 28, 54)) # TODO: change text in button and refactor colour
+    text = font.render("Go Faster", True, (14, 28, 54)) # TODO: change text in button and refactor colour
     textRect = text.get_rect()
     textRect.center = (inc_timestep_button.center[0], inc_timestep_button.center[1])
     screen.blit(text, textRect)
 
     # TODO: add other button updates
+    # go slower btn
+    inc_slower_button = pygame.draw.rect(screen, BTN_COLOUR, pygame.Rect(120, WIN_SIZE + 10, 3 * BTN_SIZE, BTN_SIZE))
+    text = font.render("Go Slower", True, (14, 28, 54)) # TODO: change text in button and refactor colour
+    textRect = text.get_rect()
+    textRect.center = (inc_slower_button.center[0], inc_slower_button.center[1])
+    screen.blit(text, textRect)
+
+
+
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
